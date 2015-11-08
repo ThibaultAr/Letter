@@ -1,12 +1,19 @@
 package letter;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
-public abstract class LetterTest {
+import content.Content;
 
-	public abstract void createLetter();
+public abstract class LetterTest<C extends Content> {
+
+	public abstract Letter<C> createLetter();
 
 	@Test
-	public abstract void testLetterShouldHavePositiveCost();
+	public void testLetterShouldHavePositiveCost(){
+		Letter<C> letter = createLetter();
+		assertTrue(letter.cost() >= 0);
+	}
 
 }

@@ -1,9 +1,13 @@
 package content;
 
 public class Money implements Content {
-	protected int money;
-	
+	protected int ammount;
+
 	public Money(int money) {
-		this.money = money;
+		this.ammount = money;
+	}
+
+	public int ammount() {
+		return ammount;
 	}
 }
