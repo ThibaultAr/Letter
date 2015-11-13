@@ -14,6 +14,8 @@ public class PromissoryNote extends Letter<Money>{
 		ThanksLetter thanks = new ThanksLetter(receiver, sender, this);
 		receiver.city().sendLetter(thanks);
 		super.doOnReceive();
+		sender.debit(content.amount());
+		receiver.credit(content.amount());
 	}
 
 	public String toString() {

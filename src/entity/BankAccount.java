@@ -22,4 +22,8 @@ public class BankAccount {
 	public void debit(int amount) {
 		this.amount -= amount;
 	}
+
+	public String balanceToString() {
+		return "balance is now "+amount;
+	}
 }

@@ -13,7 +13,7 @@ public class PromissoryNoteTest extends LetterTest<Money>{
 		} catch (NegativeAmmountException e) {
 			fail("Money should not throws exception, we just check");
 		}
-		return null; // TODO check this shit !! 
+		return null; // TODO check this 
 	}
 
 }

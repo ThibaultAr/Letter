@@ -32,4 +32,9 @@ public abstract class Letter<C extends Content> {
 	public void doOnReceive(){
 		Displayer.getDisplayer().display("<- "+receiver.name()+" receives "+toString()+ "from "+sender.name());
 	}
+	
+	public void doOnSending(){
+		Displayer.getDisplayer().display("-> "+sender.name()+" mails "+toString()+ "from "+receiver.name()+" for a cost of "+cost()+" euro");
+		sender.bankAccount().debit(cost());
+	}
 }

@@ -3,9 +3,8 @@ package entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import content.Content;
-import displayer.Displayer;
 import letter.Letter;
+import content.Content;
 
 public class City {
 	protected String name;
@@ -26,6 +25,7 @@ public class City {
 
 	public void sendLetter(Letter<? extends Content> letter) {
 		postbox.add(letter);
+		letter.doOnSending();
 	}
 
 	public void distributeLetter() {
