@@ -1,6 +1,6 @@
 package letter.exception;
 
-public class NegativeAmmountException extends Exception {
+public class NegativeAmmountException extends RuntimeException {
 
 	private static final long serialVersionUID = 8420872100896038430L;
 

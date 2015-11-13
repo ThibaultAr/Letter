@@ -32,7 +32,7 @@ public class Inhabitant {
 	}
 	
 	public void debit(int amount) {
-		bankAccount.credit(amount);
+		bankAccount.debit(amount);
 		Displayer.getDisplayer().display("- " + amount + " euro are debited from " + name +" whose "+bankAccount.balanceToString());
 	}
 }

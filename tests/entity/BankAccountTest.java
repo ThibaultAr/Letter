@@ -1,34 +1,34 @@
 package entity;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import entity.BankAccount;
-
 public class BankAccountTest {
-	protected BankAccount bankAccount;
 
-	@Before
-	public void createBankAcocunt() {
-		this.bankAccount = new BankAccount(1000000);
+	
+	@Test
+	public void testInitialCreation(){
+		BankAccount bankAccount = new BankAccount();
+		assertEquals(0, bankAccount.amount);
 	}
-
 	@Test
 	public void testCredit() {
-		assertEquals(1000000, bankAccount.getAmount());
+		BankAccount bankAccount = new BankAccount(1000000);
+		
+		assertEquals(1000000, bankAccount.amount());
 
 		bankAccount.credit(1);
-		assertEquals(1000001, bankAccount.getAmount());
+		assertEquals(1000001, bankAccount.amount());
 	}
 
 	@Test
 	public void testDebit() {
-		assertEquals(1000000, bankAccount.getAmount());
+		BankAccount bankAccount = new BankAccount(1000000);
+		assertEquals(1000000, bankAccount.amount());
 
 		bankAccount.debit(1);
-		assertEquals(999999, bankAccount.getAmount());
+		assertEquals(999999, bankAccount.amount());
 	}
 
 }
