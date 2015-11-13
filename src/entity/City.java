@@ -33,4 +33,13 @@ public class City {
 			letter.doOnReceive();
 		}
 	}
+
+	public List<Inhabitant> inhabitants() {
+		return inhabitants;
+	}
+
+	public List<Letter<? extends Content>> postbox() {
+		return postbox;
+	}
+
 }

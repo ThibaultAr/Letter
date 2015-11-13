@@ -11,7 +11,7 @@ public class BankAccount {
 		this.amount = amount;
 	}
 
-	public int getAmount() {
+	public int amount() {
 		return amount;
 	}
 
