@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import content.Content;
+import displayer.Displayer;
 import letter.Letter;
 
 public class City {
@@ -29,7 +30,7 @@ public class City {
 
 	public void distributeLetter() {
 		for(Letter<? extends Content> letter : postbox){
-			Displayer.display("<- "+letter.receiver().name()+" receives "+letter.toString()+ "from "+letter.sender().name());
+			letter.doOnReceive();
 		}
 	}
 }

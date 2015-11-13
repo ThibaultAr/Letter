@@ -12,5 +12,4 @@ public class SimpleLetter extends Letter<Text> {
 	public String toString() {
 		return "a simple "+super.toString()+"whose content is "+content.toString();
 	}
-
 }

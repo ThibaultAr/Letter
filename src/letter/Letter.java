@@ -1,6 +1,7 @@
 package letter;
 
 import content.Content;
+import displayer.Displayer;
 import entity.Inhabitant;
 
 public abstract class Letter<C extends Content> {
@@ -28,11 +29,7 @@ public abstract class Letter<C extends Content> {
 		return "letter ";
 	}
 
-	public Inhabitant sender() {
-		return sender;
-	}
-
-	public Inhabitant receiver() {
-		return receiver;
+	public void doOnReceive(){
+		Displayer.getDisplayer().display("<- "+receiver.name()+" receives "+toString()+ "from "+sender.name());
 	}
 }
