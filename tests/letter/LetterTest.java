@@ -11,9 +11,8 @@ public abstract class LetterTest<C extends Content> {
 	public abstract Letter<C> createLetter();
 
 	@Test
-	public void testLetterShouldHavePositiveCost(){
+	public void testLetterShouldHavePositiveCost() {
 		Letter<C> letter = createLetter();
 		assertTrue(letter.cost() >= 0);
 	}
-
 }

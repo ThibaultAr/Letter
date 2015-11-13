@@ -2,6 +2,7 @@ package entity;
 
 public class Inhabitant {
 	protected String name;
+
 	protected City city;
 	protected BankAccount bankAccount;
 
@@ -13,5 +14,9 @@ public class Inhabitant {
 
 	public City city() {
 		return city;
+	}
+
+	public String name() {
+		return name;
 	}
 }

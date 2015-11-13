@@ -1,29 +1,22 @@
 package letter;
 
-import letter.exception.NegativeAmmountException;
 import content.Money;
-import content.Text;
 import entity.Inhabitant;
 
-public class PromissoryNote extends Letter<Money> {
+public class PromissoryNote extends Letter<Money> implements LetterWithSpecificActionOnReceive {
 
-	public PromissoryNote(Money content, Inhabitant sender, Inhabitant receiver)
-			throws Exception {
+	public PromissoryNote(Money content, Inhabitant sender, Inhabitant receiver) {
 		super(content, sender, receiver);
-		cost = super.cost() + (content.ammount() * 10 / 100);
-	}
-
-	public void verifyContent(Money content) throws NegativeAmmountException {
-		if (content.ammount() < 0)
-			throw new NegativeAmmountException(
-					"you can't send a negative ammount of money");
+		cost = super.cost() + (content.amount() * 10 / 100);
 	}
 
 	@Override
 	public void doOnReceive() {
-		Text message = new Text("thanks for a promissory of "
-				+ content.ammount());
-		receiver.city().sendLetter(new SimpleLetter(message, receiver, sender));
+		ThanksLetter thanks = new ThanksLetter(receiver, sender, this);
+		receiver.city().sendLetter(thanks);
 	}
 
+	public String toString() {
+		return "a promissory note "+super.toString()+"whose content is "+content.toString();
+	}
 }

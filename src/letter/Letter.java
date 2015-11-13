@@ -9,8 +9,7 @@ public abstract class Letter<C extends Content> {
 	protected Inhabitant sender;
 	protected Inhabitant receiver;
 
-	public Letter(C content, Inhabitant sender, Inhabitant receiver) throws Exception {
-		verifyContent(content);
+	public Letter(C content, Inhabitant sender, Inhabitant receiver) {
 		this.content = content;
 		this.sender = sender;
 		this.receiver = receiver;
@@ -25,7 +24,15 @@ public abstract class Letter<C extends Content> {
 		return content;
 	}
 
-	public abstract void doOnReceive();
-	
-	public abstract void verifyContent(C content) throws Exception;//????????????????????????????????????
+	public String toString(){
+		return "letter ";
+	}
+
+	public Inhabitant sender() {
+		return sender;
+	}
+
+	public Inhabitant receiver() {
+		return receiver;
+	}
 }

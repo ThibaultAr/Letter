@@ -17,8 +17,7 @@ public class City {
 		postbox = new ArrayList<Letter<? extends Content>>();
 	}
 
-	public void addInhabitant(Inhabitant inhabitant)
-			throws IllegalArgumentException {
+	public void addInhabitant(Inhabitant inhabitant) throws IllegalArgumentException {
 		if (inhabitant == null)
 			throw new IllegalArgumentException();
 		inhabitants.add(inhabitant);
@@ -29,6 +28,8 @@ public class City {
 	}
 
 	public void distributeLetter() {
-		// TODO
+		for(Letter<? extends Content> letter : postbox){
+			Displayer.display("<- "+letter.receiver().name()+" receives "+letter.toString()+ "from "+letter.sender().name());
+		}
 	}
 }

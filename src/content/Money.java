@@ -1,13 +1,21 @@
 package content;
 
-public class Money implements Content {
-	protected int ammount;
+import letter.exception.NegativeAmmountException;
 
-	public Money(int money) {
-		this.ammount = money;
+public class Money implements Content {
+	protected int amount;
+
+	public Money(int money) throws NegativeAmmountException {
+		if(money < 0)
+			throw new NegativeAmmountException();
+		this.amount = money;
 	}
 
-	public int ammount() {
-		return ammount;
+	public int amount() {
+		return amount;
+	}
+	
+	public String toString(){
+		return "a money content ("+amount+") ";
 	}
 }

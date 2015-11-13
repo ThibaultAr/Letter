@@ -1,17 +1,25 @@
 package content;
 
 public class Text implements Content {
-	protected String text = "";
+	protected String text;
 
 	public Text(String text) {
 		this.text = text;
 	}
 
-	public String getText() {
+	public Text() {
+		text = "";
+	}
+
+	public String text() {
 		return text;
 	}
 
 	public boolean empty() {
-		return (text=="");
+		return (text == "");
+	}
+
+	public String toString() {
+		return "a text content ("+text+") ";
 	}
 }

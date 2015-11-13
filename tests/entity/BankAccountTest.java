@@ -9,7 +9,7 @@ import entity.BankAccount;
 
 public class BankAccountTest {
 	protected BankAccount bankAccount;
-	
+
 	@Before
 	public void createBankAcocunt() {
 		this.bankAccount = new BankAccount(1000000);
@@ -18,7 +18,7 @@ public class BankAccountTest {
 	@Test
 	public void testCredit() {
 		assertEquals(1000000, bankAccount.getAmount());
-		
+
 		bankAccount.credit(1);
 		assertEquals(1000001, bankAccount.getAmount());
 	}
@@ -26,7 +26,7 @@ public class BankAccountTest {
 	@Test
 	public void testDebit() {
 		assertEquals(1000000, bankAccount.getAmount());
-		
+
 		bankAccount.debit(1);
 		assertEquals(999999, bankAccount.getAmount());
 	}
