@@ -4,7 +4,7 @@ import content.Content;
 import displayer.Displayer;
 import entity.Inhabitant;
 
-public abstract class Letter<C extends Content> {
+public abstract class Letter<C extends Content> implements Content {
 	protected int cost;
 	protected C content;
 	protected Inhabitant sender;
