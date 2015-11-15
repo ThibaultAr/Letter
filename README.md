@@ -5,4 +5,5 @@ Luc Morel</br>
 Fatima-Ezzahra Soufiane</br>
 
 </br>
-Verifier la solution avec les Exceptions, il faut qu'on en parle.</br>
+Il reste a bloquer les urgent qui contiennent une registered qui continnent une urgente ...</br>
+Il faut encore gérer un petit problème d'affichage</br>
