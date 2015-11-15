@@ -31,8 +31,8 @@ public class City {
 	public void distributeLetter() {
 		for (Letter<? extends Content> letter : postbox) {
 			letter.doOnReceive();
-			postbox.remove(letter);
 		}
+		postbox.removeAll(postbox);
 	}
 
 	public List<Inhabitant> inhabitants() {

@@ -1,12 +1,13 @@
 package entity;
 
 import static org.junit.Assert.assertTrue;
-import letter.Letter;
-import letter.SimpleLetter;
+import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
 import content.Text;
+import letter.Letter;
+import letter.SimpleLetter;
 
 public class CityTest {
 
@@ -35,5 +36,20 @@ public class CityTest {
 
 		city.sendLetter(letter);
 		assertTrue(city.postbox().contains(letter));
+	}
+	
+	@Test
+	public void testDistributeLetter() {
+		City hobbitbourg = new City("Hobbitbourg");
+				
+		Inhabitant gandalf = new Inhabitant("Gandalf", hobbitbourg);
+		Inhabitant bilbo = new Inhabitant("Bilbo", hobbitbourg);
+		
+		SimpleLetter simpleLetter = new SimpleLetter(new Text("Bien le bonjour"), bilbo, gandalf);
+		
+		hobbitbourg.sendLetter(simpleLetter);
+		hobbitbourg.distributeLetter();
+		
+		assertFalse(hobbitbourg.postbox().contains(simpleLetter));
 	}
 }

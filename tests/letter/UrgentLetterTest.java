@@ -2,11 +2,13 @@ package letter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import content.Money;
 import content.Text;
+import entity.Inhabitant;
 
 public class UrgentLetterTest extends LetterDecoratorTest {
 
@@ -31,4 +33,15 @@ public class UrgentLetterTest extends LetterDecoratorTest {
 		assertEquals(108, urgentLetter.cost());
 	}
 
+	@Test
+	public void theContainedLetterShouldDoesSomethingOnReceive() {
+		// TODO Dépendance avec inhabitant à voir
+		Inhabitant inhabitant = new Inhabitant("bob", null);
+		LetterWhichDoesSomethingTestable letter = new LetterWhichDoesSomethingTestable(new Text("bu"), inhabitant, inhabitant);
+		UrgentLetter urgentLetter = new UrgentLetter(letter);
+		
+		urgentLetter.doOnReceive();
+		
+		assertTrue(letter.somethingHasBeenDone());
+	}
 }
