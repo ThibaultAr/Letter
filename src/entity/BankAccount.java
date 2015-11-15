@@ -24,6 +24,6 @@ public class BankAccount {
 	}
 
 	public String balanceToString() {
-		return "balance is now "+amount;
+		return "balance is now " + amount;
 	}
 }

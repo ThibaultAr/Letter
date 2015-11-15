@@ -1,23 +1,21 @@
 package letter;
 
 import content.Content;
-import entity.Inhabitant;
 
-public class RegisteredLetter extends Letter<Letter<? extends Content>> {
+public class RegisteredLetter extends LetterDecorator {
 
-	public RegisteredLetter(Letter<?> content, Inhabitant sender,
-			Inhabitant receiver) {
-		super(content, sender, receiver);
+	public RegisteredLetter(Letter<? extends Content> letter) {
+		super(letter);
 		cost += 15;
 	}
 
-	public String toString() {
-		return "a registered letter which is " + super.toString();
-	}
-	
-	public void doOnReceive(){
+	public void doOnReceive() {
 		super.doOnReceive();
-		//new AcknoledgmentOfReceipt(receiver,sender,this);
-		//TODO : send the new AcknOR
+		AknowledgmentOfReceipt aknoledgement = new AknowledgmentOfReceipt(receiver, sender, this);
+		receiver.city().sendLetter(aknoledgement);
+	}
+
+	public String description() {
+		return "a registered ";
 	}
 }

@@ -28,11 +28,13 @@ public class Inhabitant {
 
 	public void credit(int amount) {
 		bankAccount.credit(amount);
-		Displayer.getDisplayer().display("+ " + name +" account is credited with" + amount +" euros, its " +bankAccount.balanceToString());
+		Displayer.getDisplayer().display(
+				"+ " + name + " account is credited with" + amount + " euros, its " + bankAccount.balanceToString());
 	}
-	
+
 	public void debit(int amount) {
 		bankAccount.debit(amount);
-		Displayer.getDisplayer().display("- " + amount + " euro are debited from " + name +" whose "+bankAccount.balanceToString());
+		Displayer.getDisplayer()
+				.display("- " + amount + " euro are debited from " + name + " whose " + bankAccount.balanceToString());
 	}
 }

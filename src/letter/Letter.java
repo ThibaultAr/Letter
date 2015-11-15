@@ -25,16 +25,26 @@ public abstract class Letter<C extends Content> implements Content {
 		return content;
 	}
 
-	public String toString(){
+	public String toString() {
 		return "letter ";
 	}
 
-	public void doOnReceive(){
-		Displayer.getDisplayer().display("<- "+receiver.name()+" receives "+toString()+ "from "+sender.name()+"\n");
+	public void doOnReceive() {
+		Displayer.getDisplayer()
+				.display("<- " + receiver.name() + " receives " + toString() + "from " + sender.name() + "\n");
 	}
-	
-	public void doOnSending(){
-		Displayer.getDisplayer().display("-> "+sender.name()+" mails "+toString()+ "to  "+receiver.name()+" for a cost of "+cost()+" euro\n");
+
+	public void doOnSending() {
+		Displayer.getDisplayer().display("-> " + sender.name() + " mails " + toString() + "to  " + receiver.name()
+				+ " for a cost of " + cost() + " euro\n");
 		sender.debit(cost());
+	}
+
+	public Inhabitant receiver() {
+		return receiver;
+	}
+
+	public Inhabitant sender() {
+		return sender;
 	}
 }

@@ -20,6 +20,6 @@ public class Text implements Content {
 	}
 
 	public String toString() {
-		return "a text content ("+text+") ";
+		return "a text content (" + text + ") ";
 	}
 }

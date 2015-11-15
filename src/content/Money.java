@@ -6,7 +6,7 @@ public class Money implements Content {
 	protected int amount;
 
 	public Money(int money) throws NegativeAmmountException {
-		if(money < 0)
+		if (money < 0)
 			throw new NegativeAmmountException();
 		this.amount = money;
 	}
@@ -14,8 +14,8 @@ public class Money implements Content {
 	public int amount() {
 		return amount;
 	}
-	
-	public String toString(){
-		return "a money content ("+amount+") ";
+
+	public String toString() {
+		return "a money content (" + amount + ") ";
 	}
 }

@@ -31,10 +31,8 @@ public class CityTest {
 		Inhabitant geoffrey = new Inhabitant("Geoffrey", city);
 		Inhabitant ned = new Inhabitant("Ned", city);
 
-		Letter<Text> letter = new SimpleLetter(new Text(
-				"you've been beheaded, Best Regards. Geoffrey"), geoffrey, ned);
+		Letter<Text> letter = new SimpleLetter(new Text("you've been beheaded, Best Regards. Geoffrey"), geoffrey, ned);
 
-		
 		city.sendLetter(letter);
 		assertTrue(city.postbox().contains(letter));
 	}

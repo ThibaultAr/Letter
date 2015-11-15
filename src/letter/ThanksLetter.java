@@ -13,7 +13,7 @@ public class ThanksLetter extends SimpleLetter {
 		super(content, sender, receiver);
 	}
 
-	public String toString(){
-		return "a thanks letter which is "+super.toString();
+	public String toString() {
+		return "a thanks letter which is " + super.toString();
 	}
 }

@@ -29,7 +29,7 @@ public class City {
 	}
 
 	public void distributeLetter() {
-		for(Letter<? extends Content> letter : postbox){
+		for (Letter<? extends Content> letter : postbox) {
 			letter.doOnReceive();
 		}
 	}

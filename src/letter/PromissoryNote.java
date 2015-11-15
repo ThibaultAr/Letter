@@ -3,7 +3,7 @@ package letter;
 import content.Money;
 import entity.Inhabitant;
 
-public class PromissoryNote extends Letter<Money>{
+public class PromissoryNote extends Letter<Money> {
 
 	public PromissoryNote(Money content, Inhabitant sender, Inhabitant receiver) {
 		super(content, sender, receiver);
@@ -19,6 +19,6 @@ public class PromissoryNote extends Letter<Money>{
 	}
 
 	public String toString() {
-		return "a promissory note "+super.toString()+"whose content is "+content.toString();
+		return "a promissory note " + super.toString() + "whose content is " + content.toString();
 	}
 }
