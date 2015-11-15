@@ -9,6 +9,9 @@ import content.Content;
 public abstract class LetterTest<C extends Content> {
 
 	public abstract Letter<C> createLetter();
+	
+	@Test
+	public abstract void verifyCost(); 
 
 	@Test
 	public void testLetterShouldHavePositiveCost() {

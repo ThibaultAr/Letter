@@ -20,5 +20,8 @@ public abstract class LetterDecorator extends Letter<Content> {
 		return description() + super.toString() + "whose content is " + letter.toString();
 	}
 
+	public Letter<? extends Content> letter() {
+		return letter;
+	}
 	public abstract String description();
 }

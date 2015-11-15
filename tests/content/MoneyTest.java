@@ -25,4 +25,10 @@ public class MoneyTest {
 		Money money = new Money(0);
 		assertEquals(0, money.amount());
 	}
+	
+	@Test
+	public void moneyToString() {
+		Money money = new Money(10);
+		assertEquals("a money content (10) ", money.toString());
+	}
 }
