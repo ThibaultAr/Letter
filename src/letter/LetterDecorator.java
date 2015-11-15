@@ -11,6 +11,11 @@ public abstract class LetterDecorator extends Letter<Content> {
 		this.letter = letter;
 	}
 
+	public void doOnReceive(){
+		letter.doOnReceive();
+		super.doOnReceive();
+	}
+	
 	public String toString() {
 		return description() + super.toString() + "whose content is " + letter.toString();
 	}

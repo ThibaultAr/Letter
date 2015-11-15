@@ -6,7 +6,7 @@ public class RegisteredLetter extends LetterDecorator {
 
 	public RegisteredLetter(Letter<? extends Content> letter) {
 		super(letter);
-		cost += 15;
+		cost = letter.cost() + 15;
 	}
 
 	public void doOnReceive() {

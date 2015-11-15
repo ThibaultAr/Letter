@@ -6,7 +6,7 @@ public class UrgentLetter extends LetterDecorator {
 
 	public UrgentLetter(Letter<? extends Content> letter) {
 		super(letter);
-		cost *= 2;
+		cost = letter.cost() * 2;
 	}
 
 	public String description() {
