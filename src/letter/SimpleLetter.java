@@ -9,7 +9,11 @@ public class SimpleLetter extends Letter<Text> {
 		super(content, sender, receiver);
 	}
 
-	public String toString() {
-		return "a simple " + super.toString() + "whose content is " + content.toString();
+	public String description() {
+		return "a simple " + super.description();
+	}
+
+	public void doOnReceive() {
+		//nothing to do here 
 	}
 }

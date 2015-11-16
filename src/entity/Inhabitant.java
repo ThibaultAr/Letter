@@ -33,7 +33,7 @@ public class Inhabitant {
 	public void credit(int amount) {
 		bankAccount.credit(amount);
 		Displayer.getDisplayer().display(
-				"+ " + name + " account is credited with" + amount + " euros, its " + bankAccount.balanceToString()+"\n");
+				"+ " + name + " account is credited with " + amount + " euros, its " + bankAccount.balanceToString()+"\n");
 	}
 
 	public void debit(int amount) {

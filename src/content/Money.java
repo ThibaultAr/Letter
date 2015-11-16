@@ -15,7 +15,7 @@ public class Money implements Content {
 		return amount;
 	}
 
-	public String toString() {
+	public String description() {
 		return "a money content (" + amount + ") ";
 	}
 }

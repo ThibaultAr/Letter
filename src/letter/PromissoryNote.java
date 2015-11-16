@@ -13,12 +13,12 @@ public class PromissoryNote extends Letter<Money> {
 	public void doOnReceive() {
 		ThanksLetter thanks = new ThanksLetter(receiver, sender, this);
 		receiver.city().sendLetter(thanks);
-		super.doOnReceive();
+
 		sender.debit(content.amount());
 		receiver.credit(content.amount());
 	}
 
-	public String toString() {
-		return "a promissory note " + super.toString() + "whose content is " + content.toString();
+	public String description() {
+		return "a promissory note " + super.description();
 	}
 }

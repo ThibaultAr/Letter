@@ -10,7 +10,7 @@ public class UrgentLetter extends LetterDecorator {
 	}
 
 	public String description() {
-		return "an urgent ";
+		return "an urgent " + super.description();
 	}
 
 }

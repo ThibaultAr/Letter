@@ -35,7 +35,6 @@ public class UrgentLetterTest extends LetterDecoratorTest {
 
 	@Test
 	public void theContainedLetterShouldDoesSomethingOnReceive() {
-		// TODO Dépendance avec inhabitant à voir
 		Inhabitant inhabitant = new Inhabitant("bob", null);
 		LetterWhichDoesSomethingTestable letter = new LetterWhichDoesSomethingTestable(new Text("bu"), inhabitant, inhabitant);
 		UrgentLetter urgentLetter = new UrgentLetter(letter);

@@ -19,7 +19,7 @@ public class Text implements Content {
 		return (text == "");
 	}
 
-	public String toString() {
+	public String description() {
 		return "a text content (" + text + ") ";
 	}
 }

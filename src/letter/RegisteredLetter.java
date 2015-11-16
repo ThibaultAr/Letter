@@ -16,6 +16,6 @@ public class RegisteredLetter extends LetterDecorator {
 	}
 
 	public String description() {
-		return "a registered ";
+		return "a registered " + super.description();
 	}
 }
