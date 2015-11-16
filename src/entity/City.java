@@ -5,7 +5,10 @@ import java.util.List;
 
 import letter.Letter;
 import content.Content;
-
+/**
+ * The city is define by it name and contains multiples inhabitants, a post box with letters in it
+ * The class allows us to add inhabitant to the city and send/distribute a letter
+ */
 public class City {
 	protected String name;
 	protected List<Inhabitant> inhabitants;

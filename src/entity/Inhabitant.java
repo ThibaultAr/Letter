@@ -2,6 +2,10 @@ package entity;
 
 import displayer.Displayer;
 
+/**
+ * The inhabitant is represented by his name, the city where he lives and his bank account
+ * His bank account can be credited or debited
+ */
 public class Inhabitant {
 	protected String name;
 
