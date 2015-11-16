@@ -2,5 +2,5 @@ package content;
 
 public interface Content {
 
-	public String toString();
+	public String description();
 }

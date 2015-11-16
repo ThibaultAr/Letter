@@ -1,5 +1,6 @@
 package letter;
 
+import content.Money;
 import content.Text;
 import displayer.Displayer;
 import entity.City;
@@ -17,11 +18,13 @@ public class PostMain {
 		Letter<?> urgentLetter = new UrgentLetter(simpleLetter);
 		Letter<?> registeredLetter = new RegisteredLetter(simpleLetter);
 		Letter<?> urgentContainsRegistered = new UrgentLetter(registeredLetter);
+		Letter<?> promissoryNote = new PromissoryNote(new Money(128), sender, receiver);
 		
 		city.sendLetter(urgentLetter);
 		
 		Displayer.getDisplayer().display("\n\n");
 		
+		city.sendLetter(promissoryNote);
 		city.sendLetter(urgentContainsRegistered);
 		
 		Displayer.getDisplayer().display("\n\n");
