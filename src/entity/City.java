@@ -10,12 +10,21 @@ import displayer.Displayer;
 public class City {
 	protected String name;
 	protected List<Inhabitant> inhabitants;
+	/**
+	 * This postbox is used to distribute the letters
+	 */
 	protected List<Letter<? extends Content>> postbox;
+	/**
+	 * This box is used to receive letters when they're sent
+	 */
+	private List<Letter<? extends Content>> box;
+	
 
 	public City(String name) {
 		this.name = name;
 		inhabitants = new ArrayList<Inhabitant>();
 		postbox = new ArrayList<Letter<? extends Content>>();
+		box = new ArrayList<Letter<? extends Content>>();
 	}
 
 	public void addInhabitant(Inhabitant inhabitant)
@@ -26,7 +35,7 @@ public class City {
 	}
 
 	public void sendLetter(Letter<? extends Content> letter) {
-		postbox.add(letter);
+		box.add(letter);
 		Displayer.getDisplayer().display(
 				"-> " + letter.sender().name() + " mails " + letter.description() + "to  "
 						+ letter.receiver().name() + " for a cost of " + letter.cost()
@@ -35,6 +44,8 @@ public class City {
 	}
 
 	public void distributeLetter() {
+		postbox.addAll(box);
+		box.removeAll(box);
 		for (Letter<? extends Content> letter : postbox) {
 			letter.doOnReceive();
 			Displayer.getDisplayer().display(
@@ -51,6 +62,10 @@ public class City {
 
 	public List<Letter<? extends Content>> postbox() {
 		return postbox;
+	}
+	
+	public List<Letter<? extends Content>> box() {
+		return box;
 	}
 
 }

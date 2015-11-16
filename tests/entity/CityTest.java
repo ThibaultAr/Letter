@@ -35,7 +35,7 @@ public class CityTest {
 		Letter<Text> letter = new SimpleLetter(new Text("you've been beheaded, Best Regards. Geoffrey"), geoffrey, ned);
 
 		city.sendLetter(letter);
-		assertTrue(city.postbox().contains(letter));
+		assertTrue(city.box().contains(letter));
 	}
 	
 	@Test

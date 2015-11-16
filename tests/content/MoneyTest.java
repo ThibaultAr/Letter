@@ -29,6 +29,6 @@ public class MoneyTest {
 	@Test
 	public void moneyToString() {
 		Money money = new Money(10);
-		assertEquals("a money content (10) ", money.toString());
+		assertEquals("a money content (10) ", money.description());
 	}
 }

@@ -30,5 +30,10 @@ public class PostMain {
 		Displayer.getDisplayer().display("\n\n");
 		
 		city.distributeLetter();
+
+		Displayer.getDisplayer().display("\n\n");
+
+		city.distributeLetter();
+		
 	}
 }
