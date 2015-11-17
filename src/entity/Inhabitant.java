@@ -41,14 +41,4 @@ public class Inhabitant {
 		Displayer.getDisplayer()
 				.display("- " + amount + " euro are debited from " + name + " whose " + bankAccount.balanceToString()+"\n");
 	}
-	 public void sendLetter(Letter<?> l){
-                account.debit(l.getCost());
-                getCity().sendLetter(l);
-                System.out.println(l.getSender().getName() +
-                		" sending letter ["+l.getClass()+"] to " + l.getReceiver().getName());
-                System.out.println("{ "+l.getContent().contentToString()+" }");
-                System.out.println(l.getSender().getName() +
-                		" loses " +l.getCost()+" on his bank account. current sum : "
-                		+l.getSender().getBalance());
-        }
 }
