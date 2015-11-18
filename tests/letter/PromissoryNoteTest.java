@@ -35,13 +35,13 @@ public class PromissoryNoteTest extends LetterTest<Money> {
 		
 		city.sendLetter(promissoryNote);
 		
-		assertEquals(1, city.box().size());
-		assertEquals(0, city2.box().size());
+		assertEquals(1, city.postbox().size());
+		assertEquals(0, city2.postbox().size());
 
 		city.distributeLetter();
 		
-		assertEquals(0, city.box().size());
-		assertEquals(1, city2.box().size());
+		assertEquals(0, city.postbox().size());
+		assertEquals(1, city2.postbox().size());
 		// TODO Beaucoup trop de dépendance, à revoir (bis)
 	}
 	

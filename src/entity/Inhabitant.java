@@ -1,10 +1,11 @@
 package entity;
 
+import letter.Letter;
 import displayer.Displayer;
 
 /**
- * The inhabitant is represented by his name, the city where he lives and his bank account
- * His bank account can be credited or debited
+ * The inhabitant is represented by his name, the city where he lives and his
+ * bank account His bank account can be credited or debited
  */
 public class Inhabitant {
 	protected String name;
@@ -16,6 +17,11 @@ public class Inhabitant {
 		this.name = name;
 		this.city = city;
 		this.bankAccount = new BankAccount();
+	}
+
+	public Inhabitant(City city, String name, BankAccount bankAccount) {
+		this(name, city);
+		this.bankAccount = bankAccount;
 	}
 
 	public City city() {
@@ -32,13 +38,21 @@ public class Inhabitant {
 
 	public void credit(int amount) {
 		bankAccount.credit(amount);
-		Displayer.getDisplayer().display(
-				"+ " + name + " account is credited with " + amount + " euros, its " + bankAccount.balanceToString()+"\n");
+		Displayer.getDisplayer()
+				.display(
+						"+ " + name + " account is credited with " + amount
+								+ " euros, its "
+								+ bankAccount.balanceToString() + "\n");
 	}
 
 	public void debit(int amount) {
 		bankAccount.debit(amount);
-		Displayer.getDisplayer()
-				.display("- " + amount + " euro are debited from " + name + " whose " + bankAccount.balanceToString()+"\n");
+		Displayer.getDisplayer().display(
+				"- " + amount + " euro are debited from " + name + " whose "
+						+ bankAccount.balanceToString() + "\n");
+	}
+
+	public void sendLetter(Letter<?> letter) {
+		city.sendLetter(letter);
 	}
 }

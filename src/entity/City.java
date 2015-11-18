@@ -18,18 +18,18 @@ public class City {
 	/**
 	 * This postbox is used to distribute the letters
 	 */
-	protected List<Letter<? extends Content>> postbox;
+	protected List<Letter<? extends Content>> bag;
 	/**
 	 * This box is used to receive letters when they're sent
 	 */
-	private List<Letter<? extends Content>> box;
+	private List<Letter<? extends Content>> postbox;
 	
 
 	public City(String name) {
 		this.name = name;
 		inhabitants = new ArrayList<Inhabitant>();
+		bag = new ArrayList<Letter<? extends Content>>();
 		postbox = new ArrayList<Letter<? extends Content>>();
-		box = new ArrayList<Letter<? extends Content>>();
 	}
 
 	public void addInhabitant(Inhabitant inhabitant)
@@ -40,7 +40,7 @@ public class City {
 	}
 
 	public void sendLetter(Letter<? extends Content> letter) {
-		box.add(letter);
+		postbox.add(letter);
 		Displayer.getDisplayer().display(
 				"-> " + letter.sender().name() + " mails " + letter.description() + "to  "
 						+ letter.receiver().name() + " for a cost of " + letter.cost()
@@ -49,28 +49,28 @@ public class City {
 	}
 
 	public void distributeLetter() {
-		postbox.addAll(box);
-		box.removeAll(box);
-		for (Letter<? extends Content> letter : postbox) {
+		bag.addAll(postbox);
+		postbox.removeAll(postbox);
+		for (Letter<? extends Content> letter : bag) {
 			letter.doOnReceive();
 			Displayer.getDisplayer().display(
 					"<- " + letter.receiver().name() + " receives "
 							+ letter.description() + "from "
 							+ letter.sender().name() + "\n");
 		}
-		postbox.removeAll(postbox);
+		bag.removeAll(bag);
 	}
 
 	public List<Inhabitant> inhabitants() {
 		return inhabitants;
 	}
 
-	public List<Letter<? extends Content>> postbox() {
-		return postbox;
+	public List<Letter<? extends Content>> bag() {
+		return bag;
 	}
 	
-	public List<Letter<? extends Content>> box() {
-		return box;
+	public List<Letter<? extends Content>> postbox() {
+		return postbox;
 	}
 
 }

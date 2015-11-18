@@ -35,7 +35,7 @@ public class CityTest {
 		Letter<Text> letter = new SimpleLetter(new Text("you've been beheaded, Best Regards. Geoffrey"), geoffrey, ned);
 
 		city.sendLetter(letter);
-		assertTrue(city.box().contains(letter));
+		assertTrue(city.postbox().contains(letter));
 	}
 	
 	@Test
@@ -50,6 +50,6 @@ public class CityTest {
 		hobbitbourg.sendLetter(simpleLetter);
 		hobbitbourg.distributeLetter();
 		
-		assertFalse(hobbitbourg.postbox().contains(simpleLetter));
+		assertFalse(hobbitbourg.bag().contains(simpleLetter));
 	}
 }
