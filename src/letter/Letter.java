@@ -3,7 +3,7 @@ package letter;
 import content.Content;
 import entity.Inhabitant;
 
-public abstract class Letter<C extends Content> implements Content {
+public abstract class Letter<C extends Content> {
 	protected int cost;
 	protected C content;
 	protected Inhabitant sender;
