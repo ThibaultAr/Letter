@@ -62,5 +62,18 @@ public class RegisteredLetterTest extends LetterDecoratorTest {
 		assertEquals(1, city2.postbox().size());
 
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void createDoubleRegisteredLetterShouldThrowsException() {
+		SimpleLetter simpleLetter = new SimpleLetter(new Text("jambon"), null, null);
+		RegisteredLetter registeredLetter = RegisteredLetter.createLetter(simpleLetter);
+		RegisteredLetter.createLetter(registeredLetter);
+	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void createUrgentLetterInRegisteredLetterShouldThrowsException() {
+		SimpleLetter simpleLetter = new SimpleLetter(new Text("jambon"), null, null);
+		UrgentLetter urgentLetter = UrgentLetter.createLetter(simpleLetter);
+		RegisteredLetter.createLetter(urgentLetter);
+	}
 }

@@ -48,4 +48,11 @@ public class UrgentLetterTest extends LetterDecoratorTest {
 
 		assertTrue(letter.somethingHasBeenDone());
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void createDoubleUrgentLetterShouldThrowsException() {
+		SimpleLetter simpleLetter = new SimpleLetter(new Text("jambon"), null, null);
+		UrgentLetter urgentLetter = UrgentLetter.createLetter(simpleLetter);
+		UrgentLetter.createLetter(urgentLetter);
+	}
 }
