@@ -73,4 +73,8 @@ public class City {
 		return postbox;
 	}
 
+	public String name() {
+		return name;
+	}
+
 }

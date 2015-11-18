@@ -15,7 +15,7 @@ public class UrgentLetterTest extends LetterDecoratorTest {
 	@Test @Override
 	public void constructorLetterDecorator() {
 		Letter<Text> simpleLetter = new SimpleLetter(new Text("Bonjour"), null, null);
-		LetterDecorator urgentLetter = new UrgentLetter(simpleLetter);
+		LetterDecorator urgentLetter = UrgentLetter.createLetter(simpleLetter);
 		
 		assertNotNull(urgentLetter.letter());
 	}
@@ -23,12 +23,12 @@ public class UrgentLetterTest extends LetterDecoratorTest {
 	@Test
 	public void verifyCost() {
 		Letter<Text> simpleLetter = new SimpleLetter(new Text("Bonjour"), null, null);
-		LetterDecorator urgentLetter = new UrgentLetter(simpleLetter);
+		LetterDecorator urgentLetter = UrgentLetter.createLetter(simpleLetter);
 		
 		assertEquals(2, urgentLetter.cost());
 		
 		Letter<Money> promissoryNoteLetter = new PromissoryNote(new Money(530), null, null);
-		urgentLetter = new UrgentLetter(promissoryNoteLetter);
+		urgentLetter = UrgentLetter.createLetter(promissoryNoteLetter);
 		
 		assertEquals(108, urgentLetter.cost());
 	}
@@ -37,7 +37,7 @@ public class UrgentLetterTest extends LetterDecoratorTest {
 	public void theContainedLetterShouldDoesSomethingOnReceive() {
 		Inhabitant inhabitant = new Inhabitant("bob", null);
 		LetterWhichDoesSomethingTestable letter = new LetterWhichDoesSomethingTestable(new Text("bu"), inhabitant, inhabitant);
-		UrgentLetter urgentLetter = new UrgentLetter(letter);
+		UrgentLetter urgentLetter = UrgentLetter.createLetter(letter);
 		
 		urgentLetter.doOnReceive();
 		

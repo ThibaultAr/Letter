@@ -15,7 +15,7 @@ public class RegisteredLetterTest extends LetterDecoratorTest {
 	@Test @Override
 	public void constructorLetterDecorator() {
 		SimpleLetter simpleLetter = new SimpleLetter(new Text("Bonjour"), null, null);
-		RegisteredLetter registeredLetter= new RegisteredLetter(simpleLetter);
+		RegisteredLetter registeredLetter= RegisteredLetter.createLetter(simpleLetter);
 		
 		assertNotNull(registeredLetter.letter());
 	}
@@ -23,12 +23,12 @@ public class RegisteredLetterTest extends LetterDecoratorTest {
 	@Test
 	public void verifyCost() {
 		SimpleLetter simpleLetter = new SimpleLetter(new Text("Bonjour"), null, null);
-		RegisteredLetter registeredLetter= new RegisteredLetter(simpleLetter);
+		RegisteredLetter registeredLetter= RegisteredLetter.createLetter(simpleLetter);
 		
 		assertEquals(16, registeredLetter.cost());
 		
 		PromissoryNote promissoryNote = new PromissoryNote(new Money(850), null, null);
-		registeredLetter = new RegisteredLetter(promissoryNote);
+		registeredLetter = RegisteredLetter.createLetter(promissoryNote);
 		
 		assertEquals(101, registeredLetter.cost());
 	}
@@ -41,7 +41,7 @@ public class RegisteredLetterTest extends LetterDecoratorTest {
 		Inhabitant inhabitant2 = new Inhabitant("inhabitant-2", city2);
 		
 		SimpleLetter simpleLetter = new SimpleLetter(new Text("Bonjour"), inhabitant, inhabitant2);
-		RegisteredLetter registeredLetter= new RegisteredLetter(simpleLetter);
+		RegisteredLetter registeredLetter= RegisteredLetter.createLetter(simpleLetter);
 		
 		city.sendLetter(registeredLetter);
 		

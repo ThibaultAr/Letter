@@ -19,9 +19,9 @@ public class Inhabitant {
 		this.bankAccount = new BankAccount();
 	}
 
-	public Inhabitant(City city, String name, BankAccount bankAccount) {
+	public Inhabitant(String name, City city, int amount) {
 		this(name, city);
-		this.bankAccount = bankAccount;
+		this.bankAccount = new BankAccount(amount);
 	}
 
 	public City city() {

@@ -1,152 +1,107 @@
 package letter;
 
+import java.util.Random;
 
+import content.Content;
 import content.Money;
 import content.Text;
 import displayer.Displayer;
-import letter.PromissoryNote;
-import letter.RegisteredLetter;
-import letter.SimpleLetter;
-import letter.UrgentLetter;
-
-
-import entity.BankAccount;
 import entity.City;
 import entity.Inhabitant;
 
-
 public class PostMain {
 
-public static void main(String[] args){
+	private static final int INHABITANT_NUMBER = 100;
+	private static final int DAYS_NUMBER = 6;
+	private static final int MIN_LETTERS_PER_DAY = 2;
+	private static final int MAX_LETTERS_PER_DAY = 10;
 
+	protected Inhabitant inhabitants[] = new Inhabitant[INHABITANT_NUMBER];
+	protected City city;
+	static protected PostMain simulation = null;
+	
+	public PostMain() {
+		this.city = new City("Lille");
+		Displayer.getDisplayer().display("Creating " + city.name() + " city\n");
+		Displayer.getDisplayer().display(
+				"Creating " + PostMain.INHABITANT_NUMBER + " inhabitants\n");
+		for (int i = 0; i < PostMain.INHABITANT_NUMBER; i++)
+			inhabitants[i] = new Inhabitant("inhabitant-" + i, city, 5000);
 		
-		/* Declaration of variables*/
-		City lille = new City("Lille");
-		
-		BankAccount jackBank = new BankAccount(150);
-		BankAccount michelBank = new BankAccount(150);
-		BankAccount mouleBank = new BankAccount(150);
-		
-		Inhabitant jack = new Inhabitant(lille,"Jack",jackBank);
-		Inhabitant michel = new Inhabitant(lille,"Michel",michelBank);
-		Inhabitant martin = new Inhabitant(lille,"Martin",mouleBank);
-		
-		lille.addInhabitant(michel);
-		lille.addInhabitant(martin);
-		lille.addInhabitant(jack);
+	}
+	
+	public static PostMain simulation(){
+		if(PostMain.simulation == null)
+			PostMain.simulation = new PostMain();
+		return simulation;
+	}
 
-		/* Day 1 */
-		Displayer.getDisplayer().display("------------- JOUR 1 ----------------\n");
-		
-		/* Step 1 : Simple letter*/	
-		Text t = new Text("bonjour");
-		
-		lille.sendLetter(new SimpleLetter(t, jack, martin));
-		lille.sendLetter(new SimpleLetter(t,michel, martin));
-		
-		/* Watch in the post box */
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* Step 2 : Promissory Letter */
-		
-		/* creation of amount and simple letter */
-		Money moneyContent = new Money(50);
-		
-		PromissoryNote l1 = new PromissoryNote(moneyContent, jack, michel);
-		/* add of amount in the simple letter */
-		//l1.setContent(moneyContent);
-		lille.sendLetter(l1);
-		
-		/* Watch in the post box */		
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* end of day send letters to their receiver */
-		lille.distributeLetter();
-		
-		/*  Watch in the post box  */		
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* verification of the account */
-		//c.getAccountCity();
+	public Inhabitant aleatInhabitant() {
+		Random rand = new Random();
+		int alea = rand.nextInt(PostMain.INHABITANT_NUMBER);
+		return inhabitants[alea];
+	}
 
-		
-		/* day 2 */
-		Displayer.getDisplayer().display("------------- JOUR 2 ----------------\n");
-		
-		/* creation of a simple letter and a registred decorator */
-		RegisteredLetter reg = new RegisteredLetter(new SimpleLetter(t, martin, jack));
-		lille.sendLetter(reg);
-		
-		/*  Watch in the post box  */		
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* creation of a simple letter and a urgent decorator */
-		UrgentLetter urg = new UrgentLetter (new SimpleLetter(t, michel, martin));
-		lille.sendLetter(urg);
-		
-		/* creation of a promissory letter and a urgent decorator */
-		//moneyContent.setContent(20);
-		PromissoryNote p2 =new PromissoryNote (moneyContent, michel, jack);
-		//p2.setContent(moneyContent);
-		urg = new UrgentLetter(p2);
-		lille.sendLetter(urg);
-		
-		
-		/*  Watch in the post box  */		
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* end of day send letters to their receiver */
-		lille.distributeLetter();
-		
-		/*  Watch in the post box  */		
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* verification of the account */
-		//c.getAccountCityState();
-		
-		
-		/* jour 3 */
-		Displayer.getDisplayer().display("------------- JOUR 3 ----------------\n");
-		
-		/* creation of a simple letter and a registred decorator and a urgent decorator */
-		reg= new RegisteredLetter(new SimpleLetter(t, jack, michel));
-		urg = new UrgentLetter(reg);
-		//urg.setLetter(reg);
-		
-		lille.sendLetter(urg);
-		
-		/*  Watch in the post box  */		
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* Account verification */
-		//c.getAccountCityState();
-		
-		/* end of day send letters to their receiver */
-		lille.distributeLetter();
-		
-		/*  Watch in the post box  */		
-		Displayer.getDisplayer().display("\n");
-		lille.bag();
-		Displayer.getDisplayer().display("\n");
-		
-		/* Account verification */
-		//c.getAccountCityState();
-		
-		
+	private Letter<? extends Content> simpleOrPromissoryNoteLetter() {
+		Random rand = new Random();
+		int randLetter = rand.nextInt() % 2;
+
+		if (randLetter == 0)
+			return new SimpleLetter(new Text("bla bla"), aleatInhabitant(),
+					aleatInhabitant());
+		return new PromissoryNote(new Money(Math.abs(rand.nextInt()%1000)), aleatInhabitant(),
+				aleatInhabitant());
+	}
+
+	private Letter<?> registeredOption(Letter<? extends Content> letter) {
+		Random rand = new Random();
+		int randOption = rand.nextInt() % 2;
+
+		if (randOption == 0)
+			return RegisteredLetter.createLetter(letter);
+		return letter;
+	}
+
+	private Letter<?> urgentOption(Letter<?> letter) {
+		Random rand = new Random();
+		int randOption = rand.nextInt() % 2;
+
+		if (randOption == 0)
+			return UrgentLetter.createLetter(letter);
+		return letter;
+	}
+
+	public Letter<?> aleatLetter() {
+		Letter<?> letter = simpleOrPromissoryNoteLetter();
+		letter = registeredOption(letter);
+		letter = urgentOption(letter);
+
+		return letter;
+	}
+
+	public static void main(String[] args) {
+		PostMain post = new PostMain();
+		Displayer.getDisplayer().display(
+				"Mailing letters for " + PostMain.DAYS_NUMBER + " days\n");
+		int currentDay = 0;
+
+		do {
+			Displayer.getDisplayer().display(
+					"********************************************\nDay "
+							+ (currentDay+1) + "\n");
+			Random rand = new Random();
+			int randNumberOfLetters = PostMain.MIN_LETTERS_PER_DAY
+					+ rand.nextInt(PostMain.MAX_LETTERS_PER_DAY
+							- PostMain.MIN_LETTERS_PER_DAY);
+
+			for (int i = 0; i < randNumberOfLetters; i++) {
+				Letter<?> letter = post.aleatLetter();
+				post.city.sendLetter(letter);
+			}
+			
+			post.city.distributeLetter();
+			currentDay++;
+		} while (!(post.city.postbox().isEmpty()) && (currentDay <= 6));
 	}
 
 }
