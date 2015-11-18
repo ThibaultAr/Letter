@@ -12,35 +12,40 @@ import entity.Inhabitant;
 
 public class UrgentLetterTest extends LetterDecoratorTest {
 
-	@Test @Override
+	@Test
+	@Override
 	public void constructorLetterDecorator() {
-		Letter<Text> simpleLetter = new SimpleLetter(new Text("Bonjour"), null, null);
+		Letter<Text> simpleLetter = new SimpleLetter(new Text("Bonjour"), null,
+				null);
 		LetterDecorator urgentLetter = UrgentLetter.createLetter(simpleLetter);
-		
+
 		assertNotNull(urgentLetter.letter());
 	}
 
 	@Test
 	public void verifyCost() {
-		Letter<Text> simpleLetter = new SimpleLetter(new Text("Bonjour"), null, null);
+		Letter<Text> simpleLetter = new SimpleLetter(new Text("Bonjour"), null,
+				null);
 		LetterDecorator urgentLetter = UrgentLetter.createLetter(simpleLetter);
-		
+
 		assertEquals(2, urgentLetter.cost());
-		
-		Letter<Money> promissoryNoteLetter = new PromissoryNote(new Money(530), null, null);
+
+		Letter<Money> promissoryNoteLetter = new PromissoryNote(new Money(530),
+				null, null);
 		urgentLetter = UrgentLetter.createLetter(promissoryNoteLetter);
-		
+
 		assertEquals(108, urgentLetter.cost());
 	}
 
 	@Test
 	public void theContainedLetterShouldDoesSomethingOnReceive() {
 		Inhabitant inhabitant = new Inhabitant("bob", null);
-		LetterWhichDoesSomethingTestable letter = new LetterWhichDoesSomethingTestable(new Text("bu"), inhabitant, inhabitant);
+		LetterWhichDoesSomethingTestable letter = new LetterWhichDoesSomethingTestable(
+				new Text("bu"), inhabitant, inhabitant);
 		UrgentLetter urgentLetter = UrgentLetter.createLetter(letter);
-		
+
 		urgentLetter.doOnReceive();
-		
+
 		assertTrue(letter.somethingHasBeenDone());
 	}
 }

@@ -9,7 +9,8 @@ import letter.exception.NegativeAmmountException;
 public class MoneyTest {
 
 	@Test(expected = NegativeAmmountException.class)
-	public void amountOfMoneyShouldNotBeNegative() throws NegativeAmmountException {
+	public void amountOfMoneyShouldNotBeNegative()
+			throws NegativeAmmountException {
 		@SuppressWarnings("unused")
 		Money money = new Money(-2);
 	}
@@ -25,7 +26,7 @@ public class MoneyTest {
 		Money money = new Money(0);
 		assertEquals(0, money.amount());
 	}
-	
+
 	@Test
 	public void moneyToString() {
 		Money money = new Money(10);

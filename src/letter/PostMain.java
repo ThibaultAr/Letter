@@ -19,7 +19,7 @@ public class PostMain {
 	protected Inhabitant inhabitants[] = new Inhabitant[INHABITANT_NUMBER];
 	protected City city;
 	static protected PostMain simulation = null;
-	
+
 	public PostMain() {
 		this.city = new City("Lille");
 		Displayer.getDisplayer().display("Creating " + city.name() + " city\n");
@@ -27,11 +27,11 @@ public class PostMain {
 				"Creating " + PostMain.INHABITANT_NUMBER + " inhabitants\n");
 		for (int i = 0; i < PostMain.INHABITANT_NUMBER; i++)
 			inhabitants[i] = new Inhabitant("inhabitant-" + i, city, 5000);
-		
+
 	}
-	
-	public static PostMain simulation(){
-		if(PostMain.simulation == null)
+
+	public static PostMain simulation() {
+		if (PostMain.simulation == null)
 			PostMain.simulation = new PostMain();
 		return simulation;
 	}
@@ -49,8 +49,8 @@ public class PostMain {
 		if (randLetter == 0)
 			return new SimpleLetter(new Text("bla bla"), aleatInhabitant(),
 					aleatInhabitant());
-		return new PromissoryNote(new Money(Math.abs(rand.nextInt()%1000)), aleatInhabitant(),
-				aleatInhabitant());
+		return new PromissoryNote(new Money(Math.abs(rand.nextInt() % 1000)),
+				aleatInhabitant(), aleatInhabitant());
 	}
 
 	private Letter<?> registeredOption(Letter<? extends Content> letter) {
@@ -88,7 +88,7 @@ public class PostMain {
 		do {
 			Displayer.getDisplayer().display(
 					"********************************************\nDay "
-							+ (currentDay+1) + "\n");
+							+ (currentDay + 1) + "\n");
 			Random rand = new Random();
 			int randNumberOfLetters = PostMain.MIN_LETTERS_PER_DAY
 					+ rand.nextInt(PostMain.MAX_LETTERS_PER_DAY
@@ -98,7 +98,7 @@ public class PostMain {
 				Letter<?> letter = post.aleatLetter();
 				post.city.sendLetter(letter);
 			}
-			
+
 			post.city.distributeLetter();
 			currentDay++;
 		} while (!(post.city.postbox().isEmpty()) && (currentDay <= 6));

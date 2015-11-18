@@ -1,7 +1,8 @@
 package entity;
+
 /**
  * The bank account of an inhabitant can be credited or debited
- *
+ * 
  */
 public class BankAccount {
 	protected int amount;

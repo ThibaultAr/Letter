@@ -4,7 +4,7 @@ package displayer;
  * Displayer is in charge of the display, he has a unique instance
  * 
  * @author arloing
- *
+ * 
  */
 public class Displayer {
 

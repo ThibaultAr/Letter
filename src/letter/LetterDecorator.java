@@ -14,7 +14,7 @@ public abstract class LetterDecorator extends Letter<Content> {
 	public void doOnReceive() {
 		this.letter.doOnReceive();
 	}
-	
+
 	@Override
 	public String description() {
 		return "letter whose content is " + letter.description();

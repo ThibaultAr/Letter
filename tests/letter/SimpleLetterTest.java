@@ -12,7 +12,8 @@ public class SimpleLetterTest extends LetterTest<Text> {
 		return (Letter<Text>) new SimpleLetter(new Text("Bonjour"), null, null);
 	}
 
-	@Test @Override
+	@Test
+	@Override
 	public void verifyCost() {
 		Letter<Text> simpleLetter = createLetter();
 		assertEquals(1, simpleLetter.cost());

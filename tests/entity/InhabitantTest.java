@@ -11,10 +11,9 @@ public class InhabitantTest {
 	Inhabitant clement = new Inhabitant("Clement", tourcoing);
 	Inhabitant lucette = new Inhabitant("Lucette", tourcoing);
 
-	
 	@Test
 	public void testInhabitant() {
-		assertNotNull(clement);		
+		assertNotNull(clement);
 	}
 
 	@Test
@@ -25,8 +24,8 @@ public class InhabitantTest {
 
 	@Test
 	public void testName() {
-		assertEquals("Clement",clement.name());
-		assertNotEquals("Clement",lucette.name());
+		assertEquals("Clement", clement.name());
+		assertNotEquals("Clement", lucette.name());
 
 	}
 
@@ -38,10 +37,9 @@ public class InhabitantTest {
 	@Test
 	public void testCreditDebit() {
 		clement.credit(200);
-		assertEquals(200,clement.bankAccount().amount());
+		assertEquals(200, clement.bankAccount().amount());
 		clement.debit(10);
-		assertEquals(190,clement.bankAccount().amount());
+		assertEquals(190, clement.bankAccount().amount());
 	}
-
 
 }

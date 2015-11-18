@@ -8,8 +8,9 @@ import content.Content;
 import displayer.Displayer;
 
 /**
- * The city is define by it name and contains multiples inhabitants, a post box with letters in it
- * The class allows us to add inhabitant to the city and send/distribute a letter
+ * The city is define by it name and contains multiples inhabitants, a post box
+ * with letters in it The class allows us to add inhabitant to the city and
+ * send/distribute a letter
  */
 
 public class City {
@@ -23,7 +24,6 @@ public class City {
 	 * This box is used to receive letters when they're sent
 	 */
 	private List<Letter<? extends Content>> postbox;
-	
 
 	public City(String name) {
 		this.name = name;
@@ -42,9 +42,10 @@ public class City {
 	public void sendLetter(Letter<? extends Content> letter) {
 		postbox.add(letter);
 		Displayer.getDisplayer().display(
-				"-> " + letter.sender().name() + " mails " + letter.description() + "to  "
-						+ letter.receiver().name() + " for a cost of " + letter.cost()
-						+ " euro\n");
+				"-> " + letter.sender().name() + " mails "
+						+ letter.description() + "to  "
+						+ letter.receiver().name() + " for a cost of "
+						+ letter.cost() + " euro\n");
 		letter.sender().debit(letter.cost());
 	}
 
@@ -68,7 +69,7 @@ public class City {
 	public List<Letter<? extends Content>> bag() {
 		return bag;
 	}
-	
+
 	public List<Letter<? extends Content>> postbox() {
 		return postbox;
 	}

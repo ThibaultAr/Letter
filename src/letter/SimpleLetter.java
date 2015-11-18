@@ -14,6 +14,6 @@ public class SimpleLetter extends Letter<Text> {
 	}
 
 	public void doOnReceive() {
-		//nothing to do here 
+		// nothing to do here
 	}
 }
