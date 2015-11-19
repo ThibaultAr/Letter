@@ -32,8 +32,7 @@ public class CityTest {
 		Inhabitant geoffrey = new Inhabitant("Geoffrey", city);
 		Inhabitant ned = new Inhabitant("Ned", city);
 
-		Letter<Text> letter = new SimpleLetter(new Text(
-				"you've been beheaded, Best Regards. Geoffrey"), geoffrey, ned);
+		Letter<Text> letter = new SimpleLetter(new Text("you've been beheaded, Best Regards. Geoffrey"), geoffrey, ned);
 
 		city.sendLetter(letter);
 		assertTrue(city.postbox().contains(letter));
@@ -46,8 +45,7 @@ public class CityTest {
 		Inhabitant gandalf = new Inhabitant("Gandalf", hobbitbourg);
 		Inhabitant bilbo = new Inhabitant("Bilbo", hobbitbourg);
 
-		SimpleLetter simpleLetter = new SimpleLetter(
-				new Text("Bien le bonjour"), bilbo, gandalf);
+		SimpleLetter simpleLetter = new SimpleLetter(new Text("Bien le bonjour"), bilbo, gandalf);
 
 		hobbitbourg.sendLetter(simpleLetter);
 		hobbitbourg.distributeLetter();

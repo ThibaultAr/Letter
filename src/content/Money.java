@@ -7,8 +7,10 @@ public class Money implements Content {
 
 	/**
 	 * Create a new Money, Throws an exception if the amount is negative
+	 * 
 	 * @param money
-	 * @throws NegativeAmmountException if the amount is negative
+	 * @throws NegativeAmmountException
+	 *             if the amount is negative
 	 */
 	public Money(int money) throws NegativeAmmountException {
 		if (money < 0)

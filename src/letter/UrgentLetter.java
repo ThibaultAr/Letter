@@ -3,8 +3,8 @@ package letter;
 import content.Content;
 
 /**
- * An UrgentLetter can contain every letter except an UrgentLetter.
- * Its cost is double. 
+ * An UrgentLetter can contain every letter except an UrgentLetter. Its cost is
+ * double.
  *
  */
 public class UrgentLetter extends LetterDecorator {
@@ -19,8 +19,9 @@ public class UrgentLetter extends LetterDecorator {
 	}
 
 	/**
-	 * Creates an UrgentLetter only if the letter contained isn't an UrgentLetter.
-	 * This method replace the constructor
+	 * Creates an UrgentLetter only if the letter contained isn't an
+	 * UrgentLetter. This method replace the constructor
+	 * 
 	 * @param letter
 	 * @return an UrgentLetter
 	 */

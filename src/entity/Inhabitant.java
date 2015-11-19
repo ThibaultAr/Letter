@@ -38,26 +38,30 @@ public class Inhabitant {
 
 	/**
 	 * Credits the inhabitant's bank account with amount
+	 * 
 	 * @param amount
 	 */
 	public void credit(int amount) {
 		bankAccount.credit(amount);
-		Displayer.getDisplayer()
-				.display(
-						"+ " + name + " account is credited with " + amount
-								+ " euros, its "
-								+ bankAccount.balanceToString() + "\n");
+		Displayer.getDisplayer().display("\t+" 
+				+ name + " account is credited with " 
+				+ amount + " euro"+
+				((amount>1)?"s":"")+", its "
+				+ bankAccount.balanceToString() + "\n");
 	}
 
 	/**
 	 * Debits the inhabitant's bank account with amount
+	 * 
 	 * @param amount
 	 */
 	public void debit(int amount) {
 		bankAccount.debit(amount);
-		Displayer.getDisplayer().display(
-				"- " + amount + " euro are debited from " + name + " whose "
-						+ bankAccount.balanceToString() + "\n");
+		Displayer.getDisplayer().display("\t-" 
+				+ amount + " euro" +
+				((amount>1)?"s":"")+ "are debited from " 
+				+ name + " whose " 
+				+ bankAccount.balanceToString() + "\n");
 	}
 
 	public void sendLetter(Letter<?> letter) {

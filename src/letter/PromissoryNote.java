@@ -4,8 +4,8 @@ import content.Money;
 import entity.Inhabitant;
 
 /**
- * A PromissoryNote is a Letter which contains {@link Money}. 
- * The promissory note cost is increased by 10% of its amount. 
+ * A PromissoryNote is a Letter which contains {@link Money}. The promissory
+ * note cost is increased by 10% of its amount.
  */
 public class PromissoryNote extends Letter<Money> {
 
@@ -15,7 +15,8 @@ public class PromissoryNote extends Letter<Money> {
 	}
 
 	/**
-	 * When a promissory note is received, thereceiver automaticaly send a {@link ThanksLetter}
+	 * When a promissory note is received, thereceiver automaticaly send a
+	 * {@link ThanksLetter}
 	 */
 	public void doOnReceive() {
 		ThanksLetter thanks = new ThanksLetter(receiver, sender, this);

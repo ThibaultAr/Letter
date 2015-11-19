@@ -32,8 +32,7 @@ public class City {
 		postbox = new ArrayList<Letter<? extends Content>>();
 	}
 
-	public void addInhabitant(Inhabitant inhabitant)
-			throws IllegalArgumentException {
+	public void addInhabitant(Inhabitant inhabitant) throws IllegalArgumentException {
 		if (inhabitant == null)
 			throw new IllegalArgumentException();
 		inhabitants.add(inhabitant);
@@ -41,11 +40,11 @@ public class City {
 
 	public void sendLetter(Letter<? extends Content> letter) {
 		postbox.add(letter);
-		Displayer.getDisplayer().display(
-				"-> " + letter.sender().name() + " mails "
+		Displayer.getDisplayer()
+				.display("-> " + letter.sender().name() + " mails " 
 						+ letter.description() + "to  "
-						+ letter.receiver().name() + " for a cost of "
-						+ letter.cost() + " euro\n");
+						+ letter.receiver().name() + " for a cost of " + letter.cost() + " euro"
+						+ ((letter.cost() > 1) ? "s\n" : "\n"));
 		letter.sender().debit(letter.cost());
 	}
 
@@ -54,10 +53,9 @@ public class City {
 		postbox.removeAll(postbox);
 		for (Letter<? extends Content> letter : bag) {
 			letter.doOnReceive();
-			Displayer.getDisplayer().display(
-					"<- " + letter.receiver().name() + " receives "
-							+ letter.description() + "from "
-							+ letter.sender().name() + "\n");
+			Displayer.getDisplayer().display("<- " + letter.receiver().name() + " receives " 
+					+ letter.description()
+					+ "from " + letter.sender().name() + "\n");
 		}
 		bag.removeAll(bag);
 	}

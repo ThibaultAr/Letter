@@ -32,8 +32,7 @@ public class PromissoryNoteTest extends LetterTest<Money> {
 		Inhabitant inhabitant = new Inhabitant("inhabitant-1", city);
 		Inhabitant inhabitant2 = new Inhabitant("inhabitant-2", city2);
 
-		PromissoryNote promissoryNote = new PromissoryNote(new Money(10),
-				inhabitant, inhabitant2);
+		PromissoryNote promissoryNote = new PromissoryNote(new Money(10), inhabitant, inhabitant2);
 
 		city.sendLetter(promissoryNote);
 

@@ -1,8 +1,8 @@
 package entity;
 
 /**
- * The bank account of an inhabitant can be credited or debited
- * An overdraft is allowed
+ * The bank account of an inhabitant can be credited or debited An overdraft is
+ * allowed
  */
 public class BankAccount {
 	protected int amount;

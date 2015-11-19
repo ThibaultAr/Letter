@@ -9,8 +9,7 @@ import letter.exception.NegativeAmmountException;
 public class MoneyTest {
 
 	@Test(expected = NegativeAmmountException.class)
-	public void amountOfMoneyShouldNotBeNegative()
-			throws NegativeAmmountException {
+	public void amountOfMoneyShouldNotBeNegative() throws NegativeAmmountException {
 		@SuppressWarnings("unused")
 		Money money = new Money(-2);
 	}

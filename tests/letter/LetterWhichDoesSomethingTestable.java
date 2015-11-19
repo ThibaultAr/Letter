@@ -6,8 +6,7 @@ import entity.Inhabitant;
 public class LetterWhichDoesSomethingTestable extends Letter<Text> {
 	protected boolean somethingHasBeenDone;
 
-	public LetterWhichDoesSomethingTestable(Text content, Inhabitant sender,
-			Inhabitant receiver) {
+	public LetterWhichDoesSomethingTestable(Text content, Inhabitant sender, Inhabitant receiver) {
 		super(content, sender, receiver);
 		somethingHasBeenDone = false;
 	}
