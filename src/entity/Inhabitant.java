@@ -43,7 +43,7 @@ public class Inhabitant {
 	 */
 	public void credit(int amount) {
 		bankAccount.credit(amount);
-		Displayer.getDisplayer().display("\t+" 
+		Displayer.getDisplayer().display(" +" 
 				+ name + " account is credited with " 
 				+ amount + " euro"+
 				((amount>1)?"s":"")+", its "
@@ -57,9 +57,9 @@ public class Inhabitant {
 	 */
 	public void debit(int amount) {
 		bankAccount.debit(amount);
-		Displayer.getDisplayer().display("\t-" 
+		Displayer.getDisplayer().display(" -" 
 				+ amount + " euro" +
-				((amount>1)?"s":"")+ "are debited from " 
+				((amount>1)?"s are":" is")+ " debited from " 
 				+ name + " whose " 
 				+ bankAccount.balanceToString() + "\n");
 	}
