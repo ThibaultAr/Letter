@@ -3,6 +3,11 @@ package letter;
 import content.Text;
 import entity.Inhabitant;
 
+
+/**
+ * A ThanksLetter is a specific SimpleLetter which allows the receiver to thanks the sender about his letter.
+ * 
+ */
 public class ThanksLetter extends SimpleLetter {
 
 	public ThanksLetter(Inhabitant sender, Inhabitant receiver, Letter<?> letter) {

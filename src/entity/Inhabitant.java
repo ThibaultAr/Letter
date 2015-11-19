@@ -5,7 +5,7 @@ import displayer.Displayer;
 
 /**
  * The inhabitant is represented by his name, the city where he lives and his
- * bank account His bank account can be credited or debited
+ * bank account.
  */
 public class Inhabitant {
 	protected String name;
@@ -36,6 +36,10 @@ public class Inhabitant {
 		return bankAccount;
 	}
 
+	/**
+	 * Credits the inhabitant's bank account with amount
+	 * @param amount
+	 */
 	public void credit(int amount) {
 		bankAccount.credit(amount);
 		Displayer.getDisplayer()
@@ -45,6 +49,10 @@ public class Inhabitant {
 								+ bankAccount.balanceToString() + "\n");
 	}
 
+	/**
+	 * Debits the inhabitant's bank account with amount
+	 * @param amount
+	 */
 	public void debit(int amount) {
 		bankAccount.debit(amount);
 		Displayer.getDisplayer().display(

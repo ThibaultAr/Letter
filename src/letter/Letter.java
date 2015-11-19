@@ -3,6 +3,11 @@ package letter;
 import content.Content;
 import entity.Inhabitant;
 
+/**
+ * A Letter can be sent from an inhabitant to another. When the letter is received, it may trigger an action.
+ *
+ * @param <C> the content type of the letter
+ */
 public abstract class Letter<C extends Content> {
 	protected int cost;
 	protected C content;

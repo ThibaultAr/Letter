@@ -13,7 +13,10 @@ public class SimpleLetter extends Letter<Text> {
 		return "a simple " + super.description();
 	}
 
+	/**
+	 * For a simpleLetter there's nothing to do when it's received.
+	 */
 	public void doOnReceive() {
-		// nothing to do here
+
 	}
 }

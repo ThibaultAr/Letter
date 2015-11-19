@@ -3,6 +3,10 @@ package letter;
 import content.Text;
 import entity.Inhabitant;
 
+/**
+ * An AknowledgmentOfReceipt is a specific SimpleLetter which allows the sender to know that his letter has arrived  
+ *
+ */
 public class AknowledgmentOfReceipt extends SimpleLetter {
 
 	public AknowledgmentOfReceipt(Inhabitant sender, Inhabitant receiver,

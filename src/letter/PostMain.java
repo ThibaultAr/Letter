@@ -29,23 +29,34 @@ public class PostMain {
 
 	}
 
-	public Inhabitant aleatInhabitant() {
+	/**
+	 * Returns a random {@link Inhabitant} into those of the city.
+	 */
+	public Inhabitant randomInhabitant() {
 		Random rand = new Random();
 		int alea = rand.nextInt(PostMain.INHABITANT_NUMBER);
 		return inhabitants[alea];
 	}
 
+	/**
+	 * Returns a random letter chosen between {@link SimpleLetter} and {@link PromissoryNote}.
+	 */
 	private Letter<? extends Content> simpleOrPromissoryNoteLetter() {
 		Random rand = new Random();
 		int randLetter = rand.nextInt() % 2;
 
 		if (randLetter == 0)
-			return new SimpleLetter(new Text("bla bla"), aleatInhabitant(),
-					aleatInhabitant());
+			return new SimpleLetter(new Text("bla bla"), randomInhabitant(),
+					randomInhabitant());
 		return new PromissoryNote(new Money(Math.abs(rand.nextInt() % 1000)),
-				aleatInhabitant(), aleatInhabitant());
+				randomInhabitant(), randomInhabitant());
 	}
 
+	/**
+	 * Cover (or not) the letter with the {@link RegisteredLetter} option.
+	 * @param letter
+	 * @return Letter<?> a letter covered with {@link RegisteredLetter} option or not
+	 */
 	private Letter<?> registeredOption(Letter<? extends Content> letter) {
 		Random rand = new Random();
 		int randOption = rand.nextInt() % 2;
@@ -55,6 +66,11 @@ public class PostMain {
 		return letter;
 	}
 
+	/**
+	 * Cover (or not) the letter with the {@link UrgentLetter} option.
+	 * @param letter
+	 * @return Letter<?> a letter covered with {@link UrgentLetter} option or not
+	 */
 	private Letter<?> urgentOption(Letter<?> letter) {
 		Random rand = new Random();
 		int randOption = rand.nextInt() % 2;
@@ -64,7 +80,11 @@ public class PostMain {
 		return letter;
 	}
 
-	public Letter<?> aleatLetter() {
+	/**
+	 * Returns a random {@link Letter} with options (or not).
+	 * @return Letter<?> a random {@link Letter}.
+	 */
+	public Letter<?> randLetter() {
 		Letter<?> letter = simpleOrPromissoryNoteLetter();
 		letter = registeredOption(letter);
 		letter = urgentOption(letter);
@@ -90,7 +110,7 @@ public class PostMain {
 			
 			post.city.distributeLetter();
 			for (int i = 0; i < randNumberOfLetters; i++) {
-				Letter<?> letter = post.aleatLetter();
+				Letter<?> letter = post.randLetter();
 				post.city.sendLetter(letter);
 			}
 

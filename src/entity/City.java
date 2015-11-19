@@ -17,11 +17,11 @@ public class City {
 	protected String name;
 	protected List<Inhabitant> inhabitants;
 	/**
-	 * This postbox is used to distribute the letters
+	 * This bag is used to distribute the letters
 	 */
 	protected List<Letter<? extends Content>> bag;
 	/**
-	 * This box is used to receive letters when they're sent
+	 * This postbox is used to receive letters when they're sent
 	 */
 	private List<Letter<? extends Content>> postbox;
 

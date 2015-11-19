@@ -2,6 +2,10 @@ package letter;
 
 import content.Content;
 
+/**
+ * Represents a specific characteristic which can be add to every letter. 
+ *
+ */
 public abstract class LetterDecorator extends Letter<Content> {
 
 	protected Letter<? extends Content> letter;
