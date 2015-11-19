@@ -78,7 +78,7 @@ public class PostMain {
 				"Mailing letters for " + PostMain.DAYS_NUMBER + " days\n");
 		int currentDay = 0;
 
-		while (currentDay < 6) {
+		while (currentDay < PostMain.DAYS_NUMBER) {
 			Displayer.getDisplayer().display(
 					"********************************************\nDay "
 							+ (currentDay + 1) + "\n");
